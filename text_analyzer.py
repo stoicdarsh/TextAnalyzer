@@ -50,17 +50,29 @@ def word_freq_dict(text):
   print(d)
   print(f"Most frequent word :{mfw}")
 
+def longest_word(text):
+  text.replace(".","")
+  l=text.split()
+  d={}
+  for w in l:
+    d[w]=len(w)
+  print("Longest word:",max(d,key=d.get))  
+  print("Upper case:",max(d,key=d.get).upper())    
+  print("Lower case:",max(d,key=d.get).lower())
+  print("Title case:",max(d,key=d.get).title())
 
+   
 
-
-print("###......OPTIONS....####")
-print("""          1.count characters in my text.
+while True:
+  print()
+  print("###......OPTIONS....####")
+  print("""          1.count characters in my text.
           2.count words
           3.count sentence
           4.count vowels and consonant 
           5.count frequncy of each word and display word with max. frequency
-          6.Exit""")
-while True:
+          6.Display longest word, show it in different cases
+          7.Exit""")
   print()
   print()
   print("Enter your choice....")
@@ -77,6 +89,8 @@ while True:
   elif o==5:
     word_freq_dict(content)
   elif o==6:
+     longest_word(content)  
+  elif o==7:
      break  
   else:
      print("Entered invalid choice  :(  ")          
