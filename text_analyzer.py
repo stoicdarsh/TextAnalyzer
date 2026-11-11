@@ -1,6 +1,6 @@
 while True:
     print("""##**OPTIONS**##
-      1.WRITE AND ANALYZE
+      1.WRITE AND ANALYZE6
       2.ANALYZE MY TEXT FILE""")
     print()
     option=int(input("Enter your choice: "))
