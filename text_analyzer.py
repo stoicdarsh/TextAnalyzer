@@ -10,6 +10,7 @@ def main():
   d,mfw=word_freq_dict(content)
   lw,ulw,llw,tlw=longest_word(content) 
   while True:
+    print()
     print("###......OPTIONS....###")
     print("""1.Count Characters in File
 2.Count Words
@@ -24,20 +25,36 @@ def main():
       case 1:
           print(f"Total characters( with whitespace): {c1}")
           print(f"Total characters (without whitespace): {c2}")
+          with open("new.txt","a+") as file:
+             file.write(f"Total Characters(With Whitespace): {c1}\n")
+             file.write(f"Total Characters (Without Whitespace): {c2}\n")
       case 2:
           print("Total Words:",cw)
+          with open("new.txt","a+") as file:
+             file.write(f"Total words: {cw}\n")
       case 3:
           print("Total Sentences:",cs)
+          with open("new.txt","a+") as file:
+             file.write(f"Total sentences: {cs}\n")
       case 4:
           print("Vowels:",v,"Consonants:",c)
+          with open("new.txt","a+") as file:
+             file.write(f"Vowels: {v}, Consonants: {c}\n")
       case 5:
           print("Dictionary:",d)
           print("Most Frequent Word:",mfw)
+          with open("new.txt","a+") as file:
+             file.write(f"Most frequent word: {mfw}\n")
       case 6: 
           print("Longest word:",lw)  
           print("Upper case:",ulw)    
           print("Lower case:",llw)
-          print("Title case:",tlw)  
+          print("Title case:",tlw)
+          with open("new.txt","a+") as file:
+            file.write(f"Longest Word: {lw}\n")
+            file.write(f"Upper case: {ulw}\n")
+            file.write(f"Lower Case: {llw}\n")
+            file.write(f"Title Case: {tlw}\n")  
       case 7:
           print(is_palindrome())
       case 8:
@@ -46,17 +63,6 @@ def main():
           print("Entered invalid choice  :(  ")          
           print("Enter correct choice from below again ")
   with open("new.txt","a+") as file:
-     file.write(f"Total Characters(With Whitespace): {c1}\n")
-     file.write(f"Total Characters (Without Whitespace): {c2}\n")
-     file.write(f"Total words: {cw}\n")
-     file.write(f"Total sentences: {cs}\n")
-     file.write(f"Vowels: {v}, Consonants: {c}\n")
-     file.write(f"Word Count Dictionary: {d}\n")
-     file.write(f"Most frequent word: {mfw}\n")
-     file.write(f"Longest Word: {lw}\n")
-     file.write(f"Upper case: {ulw}\n")
-     file.write(f"Lower Case: {llw}\n")
-     file.write(f"Title Case: {tlw}\n")
      file.seek(0)
      print("The New file Content is Here👇")
      print(file.read())
