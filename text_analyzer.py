@@ -34,6 +34,9 @@ def main():
       case _:
           print("Entered invalid choice  :(  ")          
           print("Enter correct choice from below again ")
+  with open("new.txt","r") as file:
+     print("The New file Content is Here👇")
+     print(file.read())
 
           
 def content():
@@ -111,11 +114,21 @@ def longest_word(text):
   d={}
   for w in l:
     d[w]=len(w)
-  print("Longest word:",max(d,key=d.get))  
-  print("Upper case:",max(d,key=d.get).upper())    
-  print("Lower case:",max(d,key=d.get).lower())
-  print("Title case:",max(d,key=d.get).title())  
+  lw=max(d,key=d.get)
+  with open("new.txt","a") as file:
+     file.write(f"Longest Word: {lw}\n")
+     file.write(f"Upper case: {lw.uppper()}\n")
+     file.write(f"Lower Case: {lw.lower()}\n")
+     file.write(f"Title Case: {lw.title()}\n")
+  print("Longest word:",lw)  
+  print("Upper case:",lw.upper())    
+  print("Lower case:",lw.lower())
+  print("Title case:",lw.title())  
 
 def is_palindrome():
-   ...
-   
+   texts=input("Enter Word/phrase: ")
+   return texts==texts[::-1]
+
+
+if __name__=="__main__":
+   main()
