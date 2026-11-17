@@ -1,4 +1,4 @@
-# A program that analyses a paragraph typed by the user or read from a file
+# A program that analyses a text file or a paragraph typed by the user.
 
 def main():  
   content=content()
