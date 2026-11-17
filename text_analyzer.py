@@ -1,7 +1,7 @@
 # A program that analyses a text file or a paragraph typed by the user.
 
 def main():  
-  content=content()
+  content= data()
   print(content)
   while True:
     print("###......OPTIONS....###")
@@ -16,11 +16,15 @@ def main():
     choice=int(input("Enter your Choice[1-8]:"))
     match choice:
       case 1:
-          count_characters(content)
+          c1,c2=count_characters(content)
+          print(f"Total characters( with whitespace): {c1}")
+          print(f"Total characters (without whitespace): {c2}")
       case 2:
-          print("Total Words:",count_words(content))
+          cw=count_words(content)
+          print("Total Words:",cw)
       case 3:
-          print("Total Sentences:",count_sentence(content))
+          cs=count_sentence(content)
+          print("Total Sentences:",cs)
       case 4:
           v,c=count_vowels_consonant(content)
           print("Vowels:",v,"Consonants:",c)
@@ -29,7 +33,11 @@ def main():
           print("Dictionary:",d)
           print("Most Frequent Word:",mfw)
       case 6:
-          longest_word(content)  
+          lw,ulw,llw,tlw=longest_word(content)  
+          print("Longest word:",lw)  
+          print("Upper case:",ulw)    
+          print("Lower case:",llw)
+          print("Title case:",tlw)  
       case 7:
           print(is_palindrome())
       case 8:
@@ -37,16 +45,28 @@ def main():
       case _:
           print("Entered invalid choice  :(  ")          
           print("Enter correct choice from below again ")
-  with open("new.txt","r") as file:
+  with open("new.txt","a+") as file:
+     file.write(f"Total Characters(With Whitespace): {c1}\n")
+     file.write(f"Total Characters (Without Whitespace): {c2}\n")
+     file.write(f"Total words: {cw}\n")
+     file.write(f"Total sentences: {cs}\n")
+     file.write(f"Vowels: {v}, Consonants: {c}\n")
+     file.write(f"Word Count Dictionary: {d}")
+     file.write(f"Most frequent word: {mfw}\n")
+     file.write(f"Longest Word: {lw}\n")
+     file.write(f"Upper case: {ulw}\n")
+     file.write(f"Lower Case: {llw}\n")
+     file.write(f"Title Case: {tlw}\n")
+
      print("The New file Content is Here👇")
      print(file.read())
 
           
-def content():
+def data():
   while True:
     print(f"""{"•"*3}CHOICES{"•"*3}
-      1.Write & Analyze Text
-      2.Analyze Text File\n""")
+1.Write & Analyze Text
+2.Analyze Text File\n""")
     option=int(input("Enter your choice[1/2]: "))
     if option==1:
         content=input("""What's on your Mind !
@@ -68,22 +88,14 @@ def content():
 def count_characters(text):
    c1=len(text)
    c2=len(text.replace(" ",""))
-   with open("new.txt","a+") as file:
-      file.write(f"Total Characters(With Whitespace): {c1}\n")
-      file.write(f"Total Characters (Without Whitespace): {c2}\n")
-   print(f"Total characters( with whitespace): {c1}")
-   print(f"Total characters (without whitespace): {c2}")
+   return c1,c2
 
 def count_words(text):
    l=text.split() 
-   with open("new.txt","a") as file:
-      file.write(f"Total words: {len(l)}\n")
    return len(l)
 
 def count_sentence(text):
    l1=text.split(".")
-   with open("new.txt","a") as file:
-        file.write(f"Total sentences: {len(l1)}\n")
    return len(l1)
 
 def count_vowels_consonant(text):
@@ -95,8 +107,6 @@ def count_vowels_consonant(text):
         v+=1
       else:
         c+=1
-  with open("new.txt","a") as file:
-    file.write(f"Vowels: {v}, Consonants: {c}\n")
   return v,c      
 
 def word_freq_dict(text):
@@ -105,9 +115,6 @@ def word_freq_dict(text):
     c=text.count(w.lower())
     d[w.lower()]=c
   mfw=max(d,key=d.get)
-  with open("new.txt","a") as file:
-     file.write(f"Word Count Dictionary: {d}")
-     file.write(f"Most frequent word: {mfw}\n")
   return d,mfw
 
 def longest_word(text):
@@ -117,15 +124,7 @@ def longest_word(text):
   for w in l:
     d[w]=len(w)
   lw=max(d,key=d.get)
-  with open("new.txt","a") as file:
-     file.write(f"Longest Word: {lw}\n")
-     file.write(f"Upper case: {lw.uppper()}\n")
-     file.write(f"Lower Case: {lw.lower()}\n")
-     file.write(f"Title Case: {lw.title()}\n")
-  print("Longest word:",lw)  
-  print("Upper case:",lw.upper())    
-  print("Lower case:",lw.lower())
-  print("Title case:",lw.title())  
+  return lw,lw.upper(),lw.lower(),lw.title()
 
 def is_palindrome():
    texts=input("Enter Word/phrase: ")
