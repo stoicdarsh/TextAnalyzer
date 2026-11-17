@@ -39,7 +39,7 @@ def main():
 
           
 def content():
-   while True:
+  while True:
     print(f"""{"•"*3}CHOICES{"•"*3}
       1.Write & Analyze Text
       2.Analyze Text File\n""")
@@ -59,7 +59,7 @@ def content():
     else:
        print("Enter Valid Choice Again")        
     print("_____________________________________YOUR CONTENT____________________________________________")
-    return content
+  return content
 
 def count_characters(text):
    c1=len(text)
@@ -102,3 +102,7 @@ def longest_word(text):
   print("Upper case:",max(d,key=d.get).upper())    
   print("Lower case:",max(d,key=d.get).lower())
   print("Title case:",max(d,key=d.get).title())  
+
+def is_palindrome():
+   ...
+   
