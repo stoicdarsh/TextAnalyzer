@@ -18,13 +18,16 @@ def main():
       case 1:
           count_characters(content)
       case 2:
-          count_words(content)
+          print("Total Words:",count_words(content))
       case 3:
-          count_sentence(content)
+          print("Total Sentences:",count_sentence(content))
       case 4:
-          count_vowels_consonant(content)
+          v,c=count_vowels_consonant(content)
+          print("Vowels:",v,"Consonants:",c)
       case 5:
-          word_freq_dict(content)
+          d,mfw=word_freq_dict(content)
+          print("Dictionary:",d)
+          print("Most Frequent Word:",mfw)
       case 6:
           longest_word(content)  
       case 7:
@@ -75,13 +78,13 @@ def count_words(text):
    l=text.split() 
    with open("new.txt","a") as file:
       file.write(f"Total words: {len(l)}\n")
-   print(f"Total words :{len(l)}")
+   return len(l)
 
 def count_sentence(text):
    l1=text.split(".")
    with open("new.txt","a") as file:
         file.write(f"Total sentences: {len(l1)}\n")
-   print(f"Total sentence: {len(l1)}")
+   return len(l1)
 
 def count_vowels_consonant(text):
   c=0
@@ -94,7 +97,7 @@ def count_vowels_consonant(text):
         c+=1
   with open("new.txt","a") as file:
     file.write(f"Vowels: {v}, Consonants: {c}\n")
-  print("Vowels:",v,"Consonants:",c)      
+  return v,c      
 
 def word_freq_dict(text):
   d={}
@@ -105,8 +108,7 @@ def word_freq_dict(text):
   with open("new.txt","a") as file:
      file.write(f"Word Count Dictionary: {d}")
      file.write(f"Most frequent word: {mfw}\n")
-  print(d)
-  print(f"Most frequent word: {mfw}")
+  return d,mfw
 
 def longest_word(text):
   text.replace(".","")
