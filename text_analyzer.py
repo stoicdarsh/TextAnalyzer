@@ -3,37 +3,37 @@
 def main():  
   content= data()
   print(content)
+  c1,c2=count_characters(content)
+  cw=count_words(content)
+  cs=count_sentence(content)
+  v,c=count_vowels_consonant(content)
+  d,mfw=word_freq_dict(content)
+  lw,ulw,llw,tlw=longest_word(content) 
   while True:
     print("###......OPTIONS....###")
     print("""1.Count Characters in File
-    2.Count Words
-    3.Count Sentences
-    4.Count Vowels and Consonant 
-    5.Show Word-Frequency Dictionary with most Frequent Words
-    6.Show longest word; Show it in Different Word-Cases
-    7.Check Palindrome Words/Phrases
-    8.Exit\n\n""")
+2.Count Words
+3.Count Sentences
+4.Count Vowels and Consonant 
+5.Show Word-Frequency Dictionary with most Frequent Words
+6.Show longest word; Show it in Different Word-Cases
+7.Check Palindrome Words/Phrases
+8.Exit\n\n""")
     choice=int(input("Enter your Choice[1-8]:"))
     match choice:
       case 1:
-          c1,c2=count_characters(content)
           print(f"Total characters( with whitespace): {c1}")
           print(f"Total characters (without whitespace): {c2}")
       case 2:
-          cw=count_words(content)
           print("Total Words:",cw)
       case 3:
-          cs=count_sentence(content)
           print("Total Sentences:",cs)
       case 4:
-          v,c=count_vowels_consonant(content)
           print("Vowels:",v,"Consonants:",c)
       case 5:
-          d,mfw=word_freq_dict(content)
           print("Dictionary:",d)
           print("Most Frequent Word:",mfw)
-      case 6:
-          lw,ulw,llw,tlw=longest_word(content)  
+      case 6: 
           print("Longest word:",lw)  
           print("Upper case:",ulw)    
           print("Lower case:",llw)
@@ -51,13 +51,13 @@ def main():
      file.write(f"Total words: {cw}\n")
      file.write(f"Total sentences: {cs}\n")
      file.write(f"Vowels: {v}, Consonants: {c}\n")
-     file.write(f"Word Count Dictionary: {d}")
+     file.write(f"Word Count Dictionary: {d}\n")
      file.write(f"Most frequent word: {mfw}\n")
      file.write(f"Longest Word: {lw}\n")
      file.write(f"Upper case: {ulw}\n")
      file.write(f"Lower Case: {llw}\n")
      file.write(f"Title Case: {tlw}\n")
-
+     file.seek(0)
      print("The New file Content is Here👇")
      print(file.read())
 
