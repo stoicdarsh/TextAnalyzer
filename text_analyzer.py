@@ -13,29 +13,27 @@ def main():
     6.Show longest word; Show it in Different Word-Cases
     7.Check Palindrome Words/Phrases
     8.Exit\n\n""")
-
-    while True:
-      choice=int(input("Enter your Choice[1-8]:"))
-      match choice:
-        case 1:
-            count_characters(content)
-        case 2:
-            count_words(content)
-        case 3:
-            count_sentence(content)
-        case 4:
-            count_vowels_consonant(content)
-        case 5:
-            word_freq_dict(content)
-        case 6:
-            longest_word(content)  
-        case 7:
-            print(is_palindrome())
-        case 8:
-            break
-        case _:
-            print("Entered invalid choice  :(  ")          
-            print("Enter correct choice from below again ")
+    choice=int(input("Enter your Choice[1-8]:"))
+    match choice:
+      case 1:
+          count_characters(content)
+      case 2:
+          count_words(content)
+      case 3:
+          count_sentence(content)
+      case 4:
+          count_vowels_consonant(content)
+      case 5:
+          word_freq_dict(content)
+      case 6:
+          longest_word(content)  
+      case 7:
+          print(is_palindrome())
+      case 8:
+          break
+      case _:
+          print("Entered invalid choice  :(  ")          
+          print("Enter correct choice from below again ")
 
           
 def content():
@@ -49,7 +47,7 @@ def content():
         Write Here: """)
         break
     elif option==2:
-        filename=input("Enter your file name:")+".txt"
+        filename=input("Enter File name without Extension: ")+".txt"
         try:
           with open(filename, "r") as file:
             content=file.read()
@@ -58,21 +56,28 @@ def content():
             print(f"{filename} not found :( ") 
     else:
        print("Enter Valid Choice Again")        
-    print("_____________________________________YOUR CONTENT____________________________________________")
+  print("_____________________________________YOUR CONTENT____________________________________________")
   return content
 
 def count_characters(text):
    c1=len(text)
    c2=len(text.replace(" ",""))
+   with open("new.txt","a+") as file:
+      file.write(f"Total Characters(With Whitespace): {c1}\n")
+      file.write(f"Total Characters (Without Whitespace): {c2}\n")
    print(f"Total characters( with whitespace): {c1}")
    print(f"Total characters (without whitespace): {c2}")
 
 def count_words(text):
    l=text.split() 
+   with open("new.txt","a") as file:
+      file.write(f"Total words :{len(l)}\n")
    print(f"Total words :{len(l)}")
 
 def count_sentence(text):
    l1=text.split(".")
+   with open("new.txt","a") as file:
+        file.write(f"Total sentence: {len(l1)}\n")
    print(f"Total sentence: {len(l1)}")
 def count_vowels_consonant(text):
    v=0
@@ -82,7 +87,8 @@ def count_vowels_consonant(text):
          v+=1
       else:
          c+=1
-   print("Vowels:",v,"       ","Consonants:",c)      
+   print("Vowels:",v,"Consonants:",c)      
+
 def word_freq_dict(text):
   d={}
   for w in text.split(" "):
