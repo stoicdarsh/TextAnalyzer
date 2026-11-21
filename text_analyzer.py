@@ -51,7 +51,7 @@ def main():
       case 7:
           print(is_palindrome())
       case 8:
-          with open("new.txt","w+") as file:
+          with open("new.txt","w+",encoding="utf-8") as file:
                file.write(f"Total Characters(With Whitespace): {c1}\n")
                file.write(f"Total Characters (Without Whitespace): {c2}\n")
                file.write(f"Total words: {cw}\n")
@@ -92,7 +92,7 @@ def data():
     elif option==2:
         filename=input("Enter File name without Extension: ")+".txt"
         try:
-          with open(filename, "r") as file:
+          with open(filename, "r",encoding="utf-8") as file:
             content=file.read()
             break
         except FileNotFoundError:
