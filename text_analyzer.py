@@ -64,17 +64,17 @@ def main():
                file.write(f"Lower Case: {llw}\n")
                file.write(f"Title Case: {tlw}\n")  
                file.seek(0)
-               print(f"{"•"*3} Complete File Report is Here👇{"•"*3}\n")
+               print(f"{'•'*3} Complete File Report is Here👇{'•'*3}\n")
                print(file.read())
           break
       case _:
           print("Entered invalid choice  :(  ")          
           print("Enter correct choice from below again ")
 
-      
+
 def data():
   while True:
-    print(f"""{"•"*3}CHOICES{"•"*3}
+    print(f"""{'•'*3}CHOICES{'•'*3}
 1.Write & Analyze Text
 2.Analyze Text File\n""")
     
