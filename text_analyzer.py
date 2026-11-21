@@ -137,12 +137,15 @@ def count_vowels_consonant(text):
   return v,c      
 
 def word_freq_dict(text):
-  d={}
-  for w in text.split(" "):
-    c=text.count(w.lower())
-    d[w.lower()]=c
-  mfw=max(d,key=d.get)
-  return d,mfw
+  clean_text = "".join(ch.lower() if (ch.isalnum() or ch.isspace()) else " " for ch in text)
+  words = clean_text.split()
+  if not words:
+      return {}, "N/A"
+  d = {}
+  for w in words:
+      d[w] = d.get(w, 0) + 1
+  mfw = max(d, key=d.get)
+  return d, mfw
 
 def longest_word(text):
   text.replace(".","")
