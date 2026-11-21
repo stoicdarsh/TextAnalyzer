@@ -112,8 +112,9 @@ def count_words(text):
    return len(l)
 
 def count_sentence(text):
-   l1=text.split(".")
-   return len(l1)
+  normalized = text.replace("!", ".").replace("?", ".")
+  sentences = [s for s in normalized.split(".") if s.strip()]
+  return len(sentences)
 
 def count_vowels_consonant(text):
   c=0
