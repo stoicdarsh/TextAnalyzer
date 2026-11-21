@@ -83,7 +83,7 @@ def data():
           option=int(input("Enter your choice[1/2]: "))
           break
        except ValueError:
-          print("Enter Valid Option in described Type")
+          print("Enter Valid Choice in described Type")
 
     if option==1:
         content=input("""What's on your Mind !
