@@ -148,17 +148,17 @@ def word_freq_dict(text):
   return d, mfw
 
 def longest_word(text):
-  text.replace(".","")
-  l=text.split()
-  d={}
-  for w in l:
-    d[w]=len(w)
-  lw=max(d,key=d.get)
-  return lw,lw.upper(),lw.lower(),lw.title()
+  clean_text = "".join(ch if (ch.isalnum() or ch.isspace()) else " " for ch in text)
+  words = clean_text.split()
+  if not words:
+      return "N/A", "N/A", "N/A", "N/A"
+  lw = max(words, key=len)
+  return lw, lw.upper(), lw.lower(), lw.title()
 
 def is_palindrome():
-   texts=input("Enter Word/phrase: ")
-   return texts==texts[::-1]
+  texts = input("Enter Word/phrase: ")
+  cleaned = "".join(ch.lower() for ch in texts if ch.isalnum())
+  return bool(cleaned) and cleaned == cleaned[::-1]
 
 
 if __name__=="__main__":
