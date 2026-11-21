@@ -74,9 +74,7 @@ def main():
 
 def data():
   while True:
-    print(f"""{'•'*3}CHOICES{'•'*3}
-1.Write & Analyze Text
-2.Analyze Text File\n""")
+    print(f"{'•'*3}CHOICES{'•'*3}\n1.Write & Analyze Text\n2.Analyze Text File\n""")
     
     while True:
        try:
@@ -86,19 +84,31 @@ def data():
           print("Enter Valid Choice in described Type")
 
     if option==1:
-        content=input("""What's on your Mind !
-        Write Here: """)
-        break
-    elif option==2:
-        filename=input("Enter File name without Extension: ")+".txt"
-        try:
-          with open(filename, "r",encoding="utf-8") as file:
-            content=file.read()
+        print("What's on your Mind! Write below (press Enter on an empty line to finish):")
+        lines = []
+        while True:
+            line = input()
+            if line == "":
+                break
+            lines.append(line)
+        content = "\n".join(lines)
+        if content.strip():
             break
-        except FileNotFoundError:
-            print(f"{filename} not found :( ") 
+        print("Text cannot be empty. Please enter some text.\n")
+
+    elif option==2:
+        raw_name = input("Enter File name: ").strip()
+        filename = raw_name if raw_name.endswith(".txt") else raw_name + ".txt"
+        try:
+            with open(filename, "r", encoding="utf-8") as file:
+              content = file.read()
+            if content.strip():
+              break
+            print(f"{filename} is empty :( Choose a file with text.\n")
+        except (FileNotFoundError, OSError):
+            print(f"{filename} not found or invalid :( \n")
     else:
-       print("Enter Valid Choice Again")        
+        print("Enter Valid Choice Again")     
   print("_____________________________________YOUR CONTENT____________________________________________")
   return content
 
