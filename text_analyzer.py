@@ -20,7 +20,12 @@ def main():
 6.Show longest word; Show it in Different Word-Cases
 7.Check Palindrome Words/Phrases
 8.Exit\n\n""")
-    choice=int(input("Enter your Choice[1-8]:"))
+    while True:
+      try:
+         choice=int(input("Enter your Choice[1-8]:"))
+         break
+      except ValueError:
+         print("Enter a Valid Choice")
     match choice:
       case 1:
           print(f"Total characters( with whitespace): {c1}")
@@ -73,7 +78,14 @@ def data():
     print(f"""{"•"*3}CHOICES{"•"*3}
 1.Write & Analyze Text
 2.Analyze Text File\n""")
-    option=int(input("Enter your choice[1/2]: "))
+    
+    while True:
+       try:
+          option=int(input("Enter your choice[1/2]: "))
+          break
+       except ValueError:
+          print("Enter Valid Option in described Type")
+
     if option==1:
         content=input("""What's on your Mind !
         Write Here: """)
