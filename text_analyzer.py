@@ -118,8 +118,7 @@ def count_characters(text):
    return c1,c2
 
 def count_words(text):
-   l=text.split() 
-   return len(l)
+  return len(text.split())
 
 def count_sentence(text):
   normalized = text.replace("!", ".").replace("?", ".")
