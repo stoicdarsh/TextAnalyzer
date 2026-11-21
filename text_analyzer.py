@@ -9,7 +9,8 @@ def main():
   cs=count_sentence(content)
   v,c=count_vowels_consonant(content)
   d,mfw=word_freq_dict(content)
-  lw,ulw,llw,tlw=longest_word(content) 
+  lw,ulw,llw,tlw=longest_word(content)
+
 
   while True:
     print()
@@ -70,6 +71,8 @@ def main():
       case _:
           print("Entered invalid choice  :(  ")          
           print("Enter correct choice from below again ")
+  histogram_word_len(content)
+
 
 
 def data():
@@ -159,6 +162,25 @@ def is_palindrome():
   texts = input("Enter Word/phrase: ")
   cleaned = "".join(ch.lower() for ch in texts if ch.isalnum())
   return bool(cleaned) and cleaned == cleaned[::-1]
+
+def histogram_word_len(text):
+  clean_text = "".join(ch.lower() if (ch.isalnum() or ch.isspace()) else " " for ch in text)
+  words = clean_text.split()
+  if not words:
+        print("No words found to generate a histogram.")
+        return
+  
+  freq = {}
+  for w in words:
+      length = len(w)
+      freq[length] = freq.get(length, 0) + 1
+  d=dict(sorted(freq.items()))
+  print("\n--- Word Length Histogram ---")
+  longest = max(words, key=len)
+  for length in range(1, len(longest) + 1):
+    count = d.get(length, 0)
+    print(f"{length:>2} letter(s) | {'██' * count} ({count})")
+
 
 
 if __name__=="__main__":
