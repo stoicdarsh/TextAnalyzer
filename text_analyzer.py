@@ -180,7 +180,21 @@ def histogram_word_len(text):
   for length in range(1, len(longest) + 1):
     count = d.get(length, 0)
     print(f"{length:>2} letter(s) | {'██' * count} ({count})")
+    
+def is_palindrome(text=None):
+    if text is None:
+        raw = input("Enter Word/phrase: ")
+        text = "".join(ch.lower() for ch in raw if ch.isalnum())
+        if not text:
+            return False
 
+    if len(text) <= 1:
+        return True
+
+    if text[0] != text[-1]:
+        return False
+
+    return is_palindrome(text[1:-1])
 
 
 if __name__=="__main__":
