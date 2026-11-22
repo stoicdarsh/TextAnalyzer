@@ -113,7 +113,6 @@ Total Words: 12
 ```text
 📦 text-analyzer
  ┣ 📜 text_analyzer.py   ← main program
- ┣ 📝 new.txt            ← results log (created on first save)
  ┗ 📖 README.md
 ```
 
